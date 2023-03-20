@@ -16,7 +16,9 @@ const (
 	strConst = "abcdefghijklmnoprstuvwxyz0123456789"
 )
 
-func test()
+func test() {
+	///
+}
 
 func CreateFile(filePath string, data interface{}, fileType string) (string, error) {
 
