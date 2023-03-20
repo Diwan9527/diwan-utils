@@ -3,6 +3,7 @@ package utils
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"math/rand"
 	"net"
 	"os"
@@ -18,6 +19,7 @@ const (
 
 func Test() {
 	///
+	fmt.Println("Test")
 }
 
 func CreateFile(filePath string, data interface{}, fileType string) (string, error) {
