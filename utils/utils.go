@@ -16,7 +16,7 @@ const (
 	strConst = "abcdefghijklmnoprstuvwxyz0123456789"
 )
 
-func test() {
+func Test() {
 	///
 }
 
