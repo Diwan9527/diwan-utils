@@ -1,4 +1,4 @@
-module diwan-utils
+module github.com/Diwan9527/diwan-utils
 
 go 1.19
 
