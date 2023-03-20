@@ -16,6 +16,8 @@ const (
 	strConst = "abcdefghijklmnoprstuvwxyz0123456789"
 )
 
+func test()
+
 func CreateFile(filePath string, data interface{}, fileType string) (string, error) {
 
 	if file, err := os.OpenFile(filePath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644); err != nil {
