@@ -22,8 +22,26 @@ func Test() {
 	fmt.Println("Test")
 }
 
-func CreateFile(filePath string, data interface{}, fileType string) (string, error) {
+func CreateDir(dirPath string) (string, error) {
 
+	if _, err := os.Stat(dirPath); err != nil {
+		if os.IsNotExist(err) {
+			if err := os.Mkdir(dirPath, 0755); err != nil {
+				return "create dir failed", err
+			}
+
+		}
+	}
+	return "dir is exist", nil
+
+}
+func CreateFile(filePath string, data interface{}, fileType string) (string, error) {
+	dirPath := FilePathSpilt(filePath, "/")
+	str, err := CreateDir(dirPath)
+	if err != nil {
+
+		return str, err
+	}
 	if file, err := os.OpenFile(filePath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644); err != nil {
 		return "open file failed", err
 	} else {
@@ -141,4 +159,16 @@ func ExecCmd(cmdName string, cmdOpt string, cmd_args ...string) (string, error) 
 
 	return output.String(), nil
 
+}
+
+func FilePathSpilt(path string, sep string) string {
+
+	lastIndex := strings.LastIndex(path, sep)
+	if lastIndex == -1 {
+		//fmt.Println("Separator not found in string")
+		return "Separator not found in string"
+	}
+	lastPart := path[:lastIndex]
+
+	return lastPart
 }
